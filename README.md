@@ -1,6 +1,6 @@
 #Turn your Browser into a Phone with the Sinch JS SDK
 
-This tutorial will walk you through building a web app to make VoIP calls between browsers.
+This tutorial will walk you through building a web app to make VoIP calls between browsers. There are many scenarios in which this is a useful feature - anonymously connecting users on a dating website, securely connecting buyers with sellers in a marketplace, and allowing users to make low-cost international calls.
 
 ##Setup
 1. If you don’t have a Sinch developer account, please sign up and register a new app at 
