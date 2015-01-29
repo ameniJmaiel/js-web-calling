@@ -6,8 +6,8 @@ The finished code for this tutorial can be found on [our Github](https://github.
 
 ##Setup
 1. If you don’t have a Sinch developer account, please sign up and register a new app at 
-[www.sinch.com/signup](http://www.sinch.com/signup)
-2. Download the SDK from [www.sinch.com/js-sdk](www.sinch.com/js-sdk)
+[www.sinch.com/signup](https://www.sinch.com/signup)
+2. Download the SDK from [www.sinch.com/js-sdk](https://www.sinch.com/js-sdk)
 3. Create an index.html file with references to jQuery and the Sinch JavaScript SDK:
 
 ```
