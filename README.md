@@ -1,11 +1,11 @@
-#Turn your Browser into a Phone with the Sinch JS SDK
+#Turn Your Browser Into a Phone With the Sinch JS SDK
 
-This tutorial will walk you through building a web app to make VoIP calls between browsers. There are many scenarios in which this is a useful feature - anonymously connecting users on a dating website, securely connecting buyers with sellers in a marketplace, and allowing users to make low-cost international calls.
+This tutorial will walk you through building a web app to make VoIP calls between browsers. There are many scenarios in which this is useful, including anonymously connecting users on a dating website, securely connecting buyers with sellers in a marketplace and allowing users to make low-cost international calls.
 
 The finished code for this tutorial can be found on [our Github](https://github.com/sinch/js-web-calling).
 
 ##Setup
-1. If you don’t have a Sinch developer account, please sign up and register a new app at 
+1. If you don’t have a Sinch developer account, sign up and register a new app at 
 [www.sinch.com/signup](https://www.sinch.com/signup)
 2. Download the SDK from [www.sinch.com/js-sdk](https://www.sinch.com/js-sdk)
 3. Create an index.html file with references to jQuery and the Sinch JavaScript SDK:
@@ -20,8 +20,9 @@ The finished code for this tutorial can be found on [our Github](https://github.
 
 ##Create the UI
 
-There are two parts to the UI for this app - a login form, and a call screen. Users will first see the login screen, and once successfully logged in, then you will show the call screen:
+There are two parts to the UI for this app: a login form and a call screen. Users will first see the login screen and after successfully logging in, they will see the call screen:
 
+```
     <form id="auth">
         <input id="username" placeholder="username">
         <input id="password" type="password" placeholder="password">
@@ -43,24 +44,28 @@ There are two parts to the UI for this app - a login form, and a call screen. Us
             <div id="callLog"></div>
         </form>
     </div>
+```
     
 Lastly, a div at the bottom of the page to display any errors that might occur:
 
-    <div class="error"></div>
+ ```<div class="error"></div>```
     
-##Login and User Registration
+##Login and user registration
 
-This section will demonstrate how to login and register users using the Sinch SDK. For this tutorial, you will use a very basic backend for user management, just to get started. You should not use this in a production environment. In production you should use your own user authentication. You can find a [.net sample project here](https://github.com/sinch/net-backend-sample).
+This section will demonstrate how to log in and register users using the Sinch SDK. For this tutorial, you will use a very basic backend for user management to get started. You should not use this in a production environment. In production, you should use your own user authentication. You can find a [.net sample project here](https://github.com/sinch/net-backend-sample).
 
-First, create an instance of the Sinch Client:
+First, create an instance of the Sinch client:
 
+```
     sinchClient = new SinchClient({
         applicationKey: 'your-app-key',
         capabilities: {calling: true},
     });
+```
     
-Then, either create or login the user and start the Sinch Client:
+Then, either create or log in the user and start the Sinch client:
 
+```
     //store the username of the current user
     var global_username = '';
 
@@ -116,11 +121,13 @@ Then, either create or login the user and start the Sinch Client:
         $('div#call').show();
         $('span#username').append(global_username);
     }
+```
 
-##Make Outgoing Calls
+##Make outgoing calls
 
-Once a user is authenticated, you will use the Sinch call client to make outgoing calls. First, define a custom call listener. This lets  you make decisions based on whether a call is ringing, connected, or ended:
+Once a user is authenticated, you will use the Sinch call client to make outgoing calls. First, define a custom call listener. This lets you make decisions based on whether a call is ringing, connected or ended:
 
+```
     var callListener = {
         onCallProgressing: function(call) {
             $('div#callLog').append("<div>Ringing...</div>");
@@ -136,14 +143,18 @@ Once a user is authenticated, you will use the Sinch call client to make outgoin
             $('div#callLog').append("<div>Call ended</div>");
         }
     }
+```
     
-Then, define the Sinch call client, and also define a variable to store the current call:
+Then, define the Sinch call client and a variable to store the current call:
 
-    var callClient = sinchClient.getCallClient();
+````  
+ var callClient = sinchClient.getCallClient();
     var call;
+````
     
-When the call button is clicked, disable the call and answer buttons, tell the user who they are calling, and initiate the call! Lastly, add a call listener to the current call.
+When the call button is clicked, disable the call and answer buttons, tell the user who they are calling and initiate the call. Lastly, add a call listener to the current call.
     
+```
     $('button#call').click(function(event) {
         event.preventDefault();
         clearError();
@@ -155,20 +166,24 @@ When the call button is clicked, disable the call and answer buttons, tell the u
         call = callClient.callUser($('input#callUsername').val());
         call.addEventListener(callListener);
     });
+```
     
-And to hangup the call:
+To hang up the call:
 
+```
     $('button#hangup').click(function(event) {
         event.preventDefault();
         clearError();
     
         call && call.hangup();
     });
+```
 
-##Receive Incoming Calls
+##Receive incoming calls
 
 Your app should also listen for incoming calls:
 
+```
     callClient.addEventListener({
         onIncomingCall: function(incomingCall) {
         $('div#callLog').append("<div>Incoming call from " + incomingCall.fromId + "</div>");
@@ -177,5 +192,10 @@ Your app should also listen for incoming calls:
         call.addEventListener(callListener);
         }
     });
+```
     
-To test your app, open 2 browser windows, log in as two different users, and make the call! Some browsers will ask for permission to use the microphone on your computer when you place the call.
+##Test it
+
+To test your app, open two browser windows, log in as two different users and make the call. Some browsers will ask for permission to use the microphone on your computer when you place the call.
+
+Happy coding! If you have any questions, feel free to reach out to us on [Twitter](https://twitter.com/sinchdev) or via our [help page](https://www.sinch.com/help/dev-support/).
