@@ -2,6 +2,10 @@
 
 This tutorial will walk you through building a web app to make VoIP calls between browsers. There are many scenarios in which this is useful, including anonymously connecting users on a dating website, securely connecting buyers with sellers in a marketplace and allowing users to make low-cost international calls.
 
+The UI isn't anything to write home about, but the finished web app will looking something like this:
+
+![overview](images/overview.png)
+
 The finished code for this tutorial can be found on [our Github](https://github.com/sinch/js-web-calling).
 
 ##Setup

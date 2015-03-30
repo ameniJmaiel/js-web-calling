@@ -1,7 +1,7 @@
 var global_username = '';
 
 sinchClient = new SinchClient({
-	applicationKey: 'your-app-key',
+	applicationKey: 'a5d826f0-4a0a-48a1-8f82-6e7b5c641d5a',
 	capabilities: {calling: true},
 });
 
