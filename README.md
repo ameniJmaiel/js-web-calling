@@ -202,4 +202,4 @@ Your app should also listen for incoming calls:
 
 To test your app, open two browser windows, log in as two different users and make the call. Some browsers will ask for permission to use the microphone on your computer when you place the call.
 
-Happy coding! If you have any questions, feel free to reach out to us on [Twitter](https://twitter.com/sinchdev) or via our [help page](https://www.sinch.com/help/dev-support/).
+Happy coding! If you have any questions, feel free to reach out to us on [Twitter](https://twitter.com/sinchdev) or via our [help page](https://www.sinch.com/support/).
